@@ -1,0 +1,51 @@
+#search-input {
+    width: 70%;
+    align-content: center;
+    margin: 80px 0 0 20px;
+    height: 5vh;
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+
+#resultArea {
+    height: 80vh;
+    background-color: black;
+    color: white;
+}
+
+#search-button {
+    height: 5vh;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-size: 20px;
+}
+
+#search {
+    background-color: black;
+    height: 80vh;
+}
+
+header {
+    text-align: center;
+    color: rgb(177, 27, 27);
+    background-color: black;
+    height: 10vh;
+    align-content: center;
+}
+
+footer {
+    height: 10vh;
+    color: white;
+    background-color: black;
+    text-align: center;
+    align-content: center;
+    
+}
+
+#homeButton {
+    height: 5vh;
+    width: 20%;
+    font-size: 20px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
