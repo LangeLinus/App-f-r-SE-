@@ -1,81 +1,80 @@
 #search-input {
-    width: 65%;
-    align-content: center;
-    margin: 80px 0 0 0;
-    height: 5vh;
-    background-color: rgb(30, 30, 30);
-    color: white;
+  width: 65%;
+  align-content: center;
+  margin: 80px 0 0 0;
+  height: 5vh;
+  background-color: rgb(30, 30, 30);
+  color: white;
 }
 
 #resultArea {
-    height: 80vh;
-    background-color: black;
-    color: white;
+  height: 80vh;
+  background-color: black;
+  color: white;
 }
 
 #searchButton {
-    height: 5vh;
-    background-color: rgb(30, 30, 30);
-    color: white;
-    font-size: 20px;
+  height: 5vh;
+  background-color: rgb(30, 30, 30);
+  color: white;
+  font-size: 20px;
 }
 
 /* TODO: Black! */
 #search {
-    background-color: black;
-    color: white;
-    height: 80vh;
-    text-align: center;
+  background-color: black;
+  color: white;
+  height: 80vh;
+  text-align: center;
 }
 
 #search h1 {
-    font-size: 28px;
-    /* background-color: black;
+  font-size: 28px;
+  /* background-color: black;
     color: white;
     align-content: center; */
 }
 
 #search p {
-    font-size: 16px;
-} 
+  font-size: 16px;
+}
 
 #search fieldset {
-    color: white;
-    margin: 40px 25px 0 25px;
+  color: white;
+  margin: 40px 25px 0 25px;
 }
 
 header {
-    text-align: center;
-    color: rgb(177, 27, 27);
-    background-color: black;
-    height: 10vh;
-    align-content: center;
+  text-align: center;
+  color: rgb(177, 27, 27);
+  background-color: black;
+  height: 10vh;
+  align-content: center;
 }
 
 footer {
-    height: 10vh;
-    color: white;
-    background-color: black;
-    text-align: center;
-    align-content: center;
-    
+  height: 10vh;
+  color: white;
+  background-color: black;
+  text-align: center;
+  align-content: center;
 }
 
 #homeButton {
-    height: 5vh;
-    width: 20%;
-    font-size: 20px;
-    background-color: rgb(30, 30, 30);
-    color: white;
+  height: 5vh;
+  width: 20%;
+  font-size: 20px;
+  background-color: rgb(30, 30, 30);
+  color: white;
 }
 
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 li {
-    margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
-    word-wrap: break-word; /* Lange Worte werden umgebrochen */
+  margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
+  word-wrap: break-word; /* Lange Worte werden umgebrochen */
 }
