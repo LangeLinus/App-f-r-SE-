@@ -70,8 +70,10 @@ const fetchData = async (title, country) => {
 
     const streamingOptions = result[0].streamingOptions.de;
     streamingOptionsHTML += '<ul>';
+    
+    //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
     streamingOptions.forEach(option => {
-        streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}, Quality: ${option.quality}, Link: <a href="${option.link}" target="_blank">${option.link}</a></li>`;
+        streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
     });
     streamingOptionsHTML += '</ul>';
 
@@ -82,6 +84,7 @@ const fetchData = async (title, country) => {
             <p>Runtime:     ${result[0].runtime}</p>
             <p>Streaming Options:</p>
             ${streamingOptionsHTML}
+            <p>Overview:    ${result[0].overview}</p>
         </fieldset>
     `;
     // document.getElementsByClassName('result')[0].innerHTML += result[0].title;
