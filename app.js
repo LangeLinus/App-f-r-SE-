@@ -62,13 +62,33 @@ const fetchData = async (title, country) => {
         }
     };
 
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.error(error);
-    }
+    let output ="";
+    let streamingOptionsHTML="";
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result);
+
+    const streamingOptions = result[0].streamingOptions.de;
+    streamingOptionsHTML += '<ul>';
+    streamingOptions.forEach(option => {
+        streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}, Quality: ${option.quality}, Link: <a href="${option.link}" target="_blank">${option.link}</a></li>`;
+    });
+    streamingOptionsHTML += '</ul>';
+
+    output += `
+        <fieldset>
+            <h1>${result[0].title}</h1>
+            <p>ReleaseYear: ${result[0].releaseYear}</p>
+            <p>Runtime:     ${result[0].runtime}</p>
+            <p>Streaming Options:</p>
+            ${streamingOptionsHTML}
+        </fieldset>
+    `;
+    // document.getElementsByClassName('result')[0].innerHTML += result[0].title;
+    // document.getElementsByClassName('result')[0].innerHTML += result[0].releaseYear;
+    // document.getElementsByClassName('result')[0].innerHTML += result[0].runtime;
+    document.getElementsByClassName('result')[0].innerHTML += output;
+
 }
 
 const userInput = document.querySelector('#search-input');
@@ -82,10 +102,6 @@ const callFetchData = () => {
 }
 
 btn.addEventListener('click', callFetchData);
-
-
-
-
 
 // // JS Code wird erst ausgeführt, wenn DOM vollständig geladen ist
 // // sorgt dafür, das alle HTML Elemente verfügbar sind wenn JS Code ausgeführt wird

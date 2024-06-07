@@ -1,7 +1,7 @@
 #search-input {
-    width: 70%;
+    width: 65%;
     align-content: center;
-    margin: 80px 0 0 20px;
+    margin: 80px 0 0 0;
     height: 5vh;
     background-color: rgb(30, 30, 30);
     color: white;
@@ -20,9 +20,28 @@
     font-size: 20px;
 }
 
+/* TODO: Black! */
 #search {
     background-color: black;
+    color: white;
     height: 80vh;
+    text-align: center;
+}
+
+#search h1 {
+    font-size: 28px;
+    /* background-color: black;
+    color: white;
+    align-content: center; */
+}
+
+#search p {
+    font-size: 16px;
+} 
+
+#search fieldset {
+    color: white;
+    margin: 40px 25px 0 25px;
 }
 
 header {
@@ -50,7 +69,13 @@ footer {
     color: white;
 }
 
-div {
-    background-color: black;
-    color: white;
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
+    word-wrap: break-word; /* Lange Worte werden umgebrochen */
 }
