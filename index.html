@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(Travel-/ Movie-)App</title>
     <link href="style.css" rel="stylesheet"> 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
     <header>
@@ -13,9 +13,10 @@
     </header>
     <section>
         <section id="search">
-            <input id="search-input">
-            <a href="result.html"><button id="search-button" type="submit">Search</button></a>  
+            <input id="search-input" placeholder="Search here for ...">
+            <button id="searchButton" type="submit">Search</button>  
         </section>
+        <div class="result"></div>
     </section>
     <footer>
         <button id="homeButton">Home</button>
