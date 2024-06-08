@@ -1,16 +1,28 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 #search-input {
   width: 65%;
   align-content: center;
-  margin: 80px 0 0 0;
+  margin: 60px 0 0 0;
   height: 5vh;
   background-color: rgb(30, 30, 30);
   color: white;
+  font-size: 20px;
 }
 
 #resultArea {
   height: 80vh;
   background-color: black;
   color: white;
+}
+
+.result {
+  margin-top: 2vh;
+  max-height: 60vh; /* Begrenze die maximale Höhe des Containers */
+  overflow-y: scroll; /* Ermögliche vertikales Scrollen */
+  width: 100%;
 }
 
 #searchButton {
@@ -20,7 +32,6 @@
   font-size: 20px;
 }
 
-/* TODO: Black! */
 #search {
   background-color: black;
   color: white;
@@ -30,26 +41,39 @@
 
 #search h1 {
   font-size: 28px;
-  /* background-color: black;
-    color: white;
-    align-content: center; */
 }
 
 #search p {
-  font-size: 16px;
+  font-size: 20px;
 }
 
-#search fieldset {
+.box {
   color: white;
   margin: 40px 25px 0 25px;
+  padding: 10px;
+  border-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgb(177, 27, 27);
+}
+
+.box ul {
+  list-style-type: none;
 }
 
 header {
   text-align: center;
-  color: rgb(177, 27, 27);
+  color: white;
   background-color: black;
   height: 10vh;
   align-content: center;
+}
+
+header h1 {
+  padding: 10px;
+  background: rgb(177, 27, 27);
+  margin: 0px 25px 0 25px;
+  border-radius: 10px;
 }
 
 footer {
