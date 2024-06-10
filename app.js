@@ -1,5 +1,5 @@
 const fetchData = async (title, country) => {
-    const url = `https://streaming-availability.p.rapidapi.com/shows/search/title?series_granularity=show&show_type=movie&output_language=de&title=${title}&country=${country}`;
+    const url = `https://streaming-availability.p.rapidapi.com/shows/search/title?series_granularity=show&show_type=movie&output_language=en&title=${title}&country=${country}`;
     const options = {
         method: 'GET',
         headers: {
@@ -13,32 +13,84 @@ const fetchData = async (title, country) => {
     const result = await response.json();
     console.log(result);
 
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < 5; i++) {
         let streamingOptionsHTML="";
+        let checkedStreamingOptions = [];
 
         let streamingOptions = result[i].streamingOptions.de;
-        streamingOptionsHTML += '<ul>';
+
+        // Old version for Presentation Streaming Availability Options
+        // streamingOptionsHTML += '<ul>';
         
-        //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
-        streamingOptions.forEach(option => {
-            streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
+        // //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
+        // streamingOptions.forEach(option => {
+        //     streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
+        // });
+        // streamingOptionsHTML += '</ul>';
+
+
+        streamingOptionsHTML += '<table  id="tableStreamingOptions"><tr><th>Service</th><th>Payment</th><th>Price</th></tr>';
+        checkedStreamingOptions = checkArrayUnique(streamingOptions);
+
+        checkedStreamingOptions.forEach(option => {
+            streamingOptionsHTML += `<tr>
+                <td>${option.name}</td>
+                <td>${option.type}</td>
+                <td>${option.price}</td>
+            </tr>`;
         });
-        streamingOptionsHTML += '</ul>';
 
-
-        //Maybe wieder einbauen <p>Overview:    ${result[i].overview}</p>
+        streamingOptionsHTML += '</table>';
+ 
         output += `
             <div class="box">
                 <h1>${result[i].title}</h1>
-                <p>ReleaseYear: ${result[i].releaseYear}</p>
-                <p>Runtime:     ${result[i].runtime}</p>
-                <p>Streaming Options:</p>
+                <p class="firstP">
+                <span><strong>ReleaseYear : </strong> ${result[i].releaseYear}</span>
+                <span><strong>Runtime : </strong>${result[i].runtime} min</span></p>
+                <p id="streamingOptions"><strong>Streaming Options:</strong></p>
                 ${streamingOptionsHTML}
+                <p id="overview"><strong>Overview: </strong>${result[i].overview}</p>
             </div>
         `;
 
         document.getElementsByClassName('result')[0].innerHTML = output;
     }
+}
+
+function checkArrayUnique(streamingOptions) {
+
+    // Set elemeniert doppelte Werte automatisch
+    let usedStreamingOptions = new Set();
+    let subscriptionOptions = [];
+    let paidOptions = [];
+
+    streamingOptions.forEach((option, index) => {
+
+            const serviceName = option.service.name;
+            if (!usedStreamingOptions.has(serviceName)) {
+                usedStreamingOptions.add(serviceName);
+
+                if(option.type !== "subscription") {
+                    paidOptions.push({
+                        index: index,
+                        name: serviceName,
+                        type: option.type,
+                        price: option.price ? option.price.amount : null
+                    });
+                }
+
+                else {
+                    subscriptionOptions.push({
+                        index: index,
+                        name: serviceName,
+                        type: option.type,
+                        price: "free"
+                    });
+                }
+            }
+    });
+    return subscriptionOptions.concat(paidOptions);
 }
 
 const userInput = document.querySelector('#search-input');

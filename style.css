@@ -13,6 +13,7 @@
   background-color: rgb(20, 20, 20);
   color: white;
   font-size: 20px;
+  border: none;
 }
 
 #search-input::placeholder {
@@ -37,6 +38,7 @@
   background-color: rgb(20, 20, 20);
   color: white;
   font-size: 20px;
+  border: none;
 }
 
 #search {
@@ -44,6 +46,12 @@
   color: white;
   height: 80vh;
   text-align: center;
+}
+
+.firstP {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #search h1 {
@@ -93,10 +101,11 @@ footer {
 
 #supportButton {
   height: 5vh;
-  width: 20%;
+  width: 30%;
   font-size: 20px;
   background-color: rgb(20, 20, 20);
   color: white;
+  border: none;
 }
 
 #homeButton {
@@ -107,13 +116,45 @@ footer {
   color: white;
 }
 
-ul {
+#tableStreamingOptions {
+  margin-top: 5px;
+  width: 100%;
+  background-color: white;
+  text-align: left;
+}
+
+td {
+  font-size: 18px;
+  text-align: center;
+  background-color: rgb(177, 27, 27);
+  text-align: left;
+}
+
+th {
+  font-size: 20px;
+  background-color: rgb(177, 27, 27);
+}
+
+#streamingOptions, #overview {
+  margin-top: 20px;
+  text-align: left;
+  align-items: end;
+}
+
+#overview {
+  display: block;
+}
+
+/* Not needed any more */
+/* ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 li {
-  margin-bottom: 10px; /* Abstand zwischen den Listenelementen */
-  word-wrap: break-word; /* Lange Worte werden umgebrochen */
-}
+  margin-bottom: 10px; 
+'  word-wrap: break-word; 
+} 
+*/
+
