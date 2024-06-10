@@ -1,5 +1,5 @@
 const fetchData = async (title, country) => {
-    const url = `https://streaming-availability.p.rapidapi.com/shows/search/title?series_granularity=show&show_type=movie&output_language=en&title=${title}&country=${country}`;
+    const url = `https://streaming-availability.p.rapidapi.com/shows/search/title?series_granularity=show&show_type=movie&output_language=de&title=${title}&country=${country}`;
     const options = {
         method: 'GET',
         headers: {

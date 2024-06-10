@@ -2,12 +2,27 @@
 
 ## Todo's:
 
-* Thema festlegen (Movie oder Travel)
-* Desgin erstellen
-* Frontend programmieren
-* API's einbinden in js Datei
-* PWA erstellen zum Testen
-* ...
+~~* Thema festlegen (Movie oder Travel)~~
+~~* Desgin erstellen~~
+~~* Frontend programmieren~~
+~~* API's einbinden in js Datei~~
+~~* PWA erstellen zum Testen~~
+~~* UX verbessern~~
+~~* Support Us Funktion einbinden~~
+* API für Support Us einbinden
+* Streaming Options in Tabel darstellen
+* Streaming Options nur einmal darstellen
+* Streaming Options mit Preis seperat darstellen
+* Movie Description wieder einfügen wenn mehr Platz 
+* Bilder hinzufügen mit 3. API (maybe) für UX
+* App Logo oben Links einfügen (Header)
+* Support Us oben rechts einfügen (Header)
+* KI API in Footer einfügen -> änliche Titel einfügen
+* Auf 100 Wörter oder so beschränken 
+* Hochziefunktion für Footer einfügen
+* Allgemeine UX verbessern
+  * Suchen mit Enter
+  * ...
   
 
 ### GitHub Befehle für die Konsole:
