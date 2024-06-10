@@ -91,6 +91,14 @@ footer {
   align-content: center;
 }
 
+#supportButton {
+  height: 5vh;
+  width: 20%;
+  font-size: 20px;
+  background-color: rgb(20, 20, 20);
+  color: white;
+}
+
 #homeButton {
   height: 5vh;
   width: 20%;
