@@ -21,14 +21,14 @@
 }
 
 #resultArea {
-  height: 80vh;
+  height: 70vh;
   background-color: black;
   color: white;
 }
 
 .result {
-  margin-top: 2vh;
-  max-height: 60vh; /* Begrenze die maximale Höhe des Containers */
+  margin-top: 1vh;
+  max-height: 55vh; /* Begrenze die maximale Höhe des Containers */
   overflow-y: scroll; /* Ermögliche vertikales Scrollen */
   width: 100%;
 }
@@ -44,7 +44,7 @@
 #search {
   background-color: black;
   color: white;
-  height: 80vh;
+  height: 70vh;
   text-align: center;
 }
 
@@ -92,28 +92,12 @@ header h1 {
 }
 
 footer {
-  height: 10vh;
+  height:20vh;
   color: white;
   background-color: black;
   text-align: left;
   align-content: flex-start;
-}
-
-#supportButton {
-  height: 5vh;
-  width: 20%;
-  font-size: 17px;
-  background-color: rgb(177, 27, 27);
-  color: white;
-  border: none;
-}
-
-#homeButton {
-  height: 5vh;
-  width: 20%;
-  font-size: 20px;
-  background-color: rgb(20, 20, 20);
-  color: white;
+  font-size: 18px;
 }
 
 #tableStreamingOptions {
@@ -145,18 +129,30 @@ th {
   display: block;
 }
 
+#footerChatGpt {
+  width: 88%;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  margin: 25px auto;
+  padding: 10px;
+  border-color: white;
+  border-radius: 10px;
+}
 
+#similarMovies {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
 
-/* Not needed any more */
-/* ul {
+ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 li {
-  margin-bottom: 10px; 
-'  word-wrap: break-word; 
+  margin-top: 5px; 
+  word-wrap: break-word; 
 } 
-*/
+
 
