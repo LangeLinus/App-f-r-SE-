@@ -95,8 +95,8 @@ footer {
   height: 10vh;
   color: white;
   background-color: black;
-  text-align: center;
-  align-content: center;
+  text-align: left;
+  align-content: flex-start;
 }
 
 #supportButton {
@@ -144,6 +144,8 @@ th {
 #overview {
   display: block;
 }
+
+
 
 /* Not needed any more */
 /* ul {
