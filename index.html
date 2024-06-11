@@ -15,6 +15,10 @@
       src="app.js"
       defer
     ></script>
+    <script
+      src = "chatkram.js"
+      defer
+      ></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -22,7 +26,13 @@
   </head>
   <body>
     <header>
-      <h1>Find your Movie</h1>
+      <section>
+        <h1>Find your Movie
+        <a href="support.html">
+          <button id="supportButton">Support Us</button>
+          </a>
+        </h1>
+      </section>
     </header>
     <section id="search">
       <section>
@@ -40,9 +50,7 @@
       <div class="result"></div>
     </section>
     <footer>
-      <a href="support.html">
-      <button id="supportButton">Support Us</button>
-      </a>
+      <div id="ansChatGpt"></div>
     </footer>
   </body>
 </html>
