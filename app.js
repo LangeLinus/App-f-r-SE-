@@ -13,23 +13,13 @@ const fetchData = async (title, country) => {
     const result = await response.json();
     console.log(result);
 
-    for(let i = 0; i < 4; i++) {
+    for(let i = 0; i < 3; i++) {
         if(result[i].streamingOptions.de !== undefined) {
 
             let streamingOptionsHTML="";
             let checkedStreamingOptions = [];
 
             let streamingOptions = result[i].streamingOptions.de;
-
-            // Old version for Presentation Streaming Availability Options
-            // streamingOptionsHTML += '<ul>';
-            
-            // //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
-            // streamingOptions.forEach(option => {
-            //     streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
-            // });
-            // streamingOptionsHTML += '</ul>';
-
 
             streamingOptionsHTML += '<table  id="tableStreamingOptions"><tr><th>Service</th><th>Payment</th><th>Price</th></tr>';
             checkedStreamingOptions = checkArrayUnique(streamingOptions);
@@ -64,17 +54,18 @@ const fetchData = async (title, country) => {
 function checkArrayUnique(streamingOptions) {
 
     // Set elemeniert doppelte Werte automatisch
-    let usedStreamingOptions = new Set();
+    let usedPaidStreamingOptions = new Set();
+    let usedSubscribeStreamingOptions = new Set();
     let subscriptionOptions = [];
     let paidOptions = [];
 
     streamingOptions.forEach((option, index) => {
 
             const serviceName = option.service.name;
-            if (!usedStreamingOptions.has(serviceName)) {
-                usedStreamingOptions.add(serviceName);
+            if (!usedPaidStreamingOptions.has(serviceName) || !usedSubscribeStreamingOptions.has(serviceName)) {
 
-                if(option.type !== "subscription") {
+                if(option.type !== "subscription" && !usedPaidStreamingOptions.has(serviceName)) {
+                    usedPaidStreamingOptions.add(serviceName);
                     paidOptions.push({
                         index: index,
                         name: serviceName,
@@ -83,7 +74,8 @@ function checkArrayUnique(streamingOptions) {
                     });
                 }
 
-                else {
+                else if (option.type === "subscription" && !usedSubscribeStreamingOptions.has(serviceName)) {
+                    usedSubscribeStreamingOptions.add(serviceName);
                     subscriptionOptions.push({
                         index: index,
                         name: serviceName,
@@ -109,6 +101,14 @@ const callFetchData = () => {
 btn.addEventListener('click', callFetchData);
 
 
-
+// Ablage für alten Code 
+// Old version for Presentation Streaming Availability Options
+// streamingOptionsHTML += '<ul>';
+            
+// //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
+// streamingOptions.forEach(option => {
+//     streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
+// });
+// streamingOptionsHTML += '</ul>';
 
 
