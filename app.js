@@ -13,48 +13,51 @@ const fetchData = async (title, country) => {
     const result = await response.json();
     console.log(result);
 
-    for(let i = 0; i < 5; i++) {
-        let streamingOptionsHTML="";
-        let checkedStreamingOptions = [];
+    for(let i = 0; i < 4; i++) {
+        if(result[i].streamingOptions.de !== undefined) {
 
-        let streamingOptions = result[i].streamingOptions.de;
+            let streamingOptionsHTML="";
+            let checkedStreamingOptions = [];
 
-        // Old version for Presentation Streaming Availability Options
-        // streamingOptionsHTML += '<ul>';
+            let streamingOptions = result[i].streamingOptions.de;
+
+            // Old version for Presentation Streaming Availability Options
+            // streamingOptionsHTML += '<ul>';
+            
+            // //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
+            // streamingOptions.forEach(option => {
+            //     streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
+            // });
+            // streamingOptionsHTML += '</ul>';
+
+
+            streamingOptionsHTML += '<table  id="tableStreamingOptions"><tr><th>Service</th><th>Payment</th><th>Price</th></tr>';
+            checkedStreamingOptions = checkArrayUnique(streamingOptions);
+
+            checkedStreamingOptions.forEach(option => {
+                streamingOptionsHTML += `<tr>
+                    <td>${option.name}</td>
+                    <td>${option.type}</td>
+                    <td>${option.price}</td>
+                </tr>`;
+            });
         
-        // //TODO: , Price: ${option.price.amount} einbauen mit if falls kein Preis vorhanden
-        // streamingOptions.forEach(option => {
-        //     streamingOptionsHTML += `<li>Service: ${option.service.name}, Type: ${option.type}</li>`;
-        // });
-        // streamingOptionsHTML += '</ul>';
+            streamingOptionsHTML += '</table>';
+    
+            output += `
+                <div class="box">
+                    <h1>${result[i].title}</h1>
+                    <p class="firstP">
+                    <span><strong>ReleaseYear : </strong> ${result[i].releaseYear}</span>
+                    <span><strong>Runtime : </strong>${result[i].runtime} min</span></p>
+                    <p id="streamingOptions"><strong>Streaming Options:</strong></p>
+                    ${streamingOptionsHTML}
+                    <p id="overview"><strong>Overview: </strong>${result[i].overview}</p>
+                </div>
+            `;
 
-
-        streamingOptionsHTML += '<table  id="tableStreamingOptions"><tr><th>Service</th><th>Payment</th><th>Price</th></tr>';
-        checkedStreamingOptions = checkArrayUnique(streamingOptions);
-
-        checkedStreamingOptions.forEach(option => {
-            streamingOptionsHTML += `<tr>
-                <td>${option.name}</td>
-                <td>${option.type}</td>
-                <td>${option.price}</td>
-            </tr>`;
-        });
-
-        streamingOptionsHTML += '</table>';
- 
-        output += `
-            <div class="box">
-                <h1>${result[i].title}</h1>
-                <p class="firstP">
-                <span><strong>ReleaseYear : </strong> ${result[i].releaseYear}</span>
-                <span><strong>Runtime : </strong>${result[i].runtime} min</span></p>
-                <p id="streamingOptions"><strong>Streaming Options:</strong></p>
-                ${streamingOptionsHTML}
-                <p id="overview"><strong>Overview: </strong>${result[i].overview}</p>
-            </div>
-        `;
-
-        document.getElementsByClassName('result')[0].innerHTML = output;
+            document.getElementsByClassName('result')[0].innerHTML = output;
+        }
     }
 }
 
