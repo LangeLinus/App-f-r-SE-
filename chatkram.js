@@ -1,18 +1,18 @@
-const chatData = async(test) =>{   
-    const url = 'https://chat-gpt26.p.rapidapi.com/';
+const chatData = async(nutzerEingabe) =>{   //nutzereingabe ist da einfach nur um andere name zu verwenden 
+    const url = 'https://chat-gpt26.p.rapidapi.com/';//bis Zeile 24 alles von der API vorgegeben
     const options = {
         method: 'POST',
         headers: {
-            'x-rapidapi-key': '64125cfbf1msh44227ae3f9bc8e5p15b7bcjsn3933d5336452',
+            'x-rapidapi-key': '91f8942407mshcccb16440fc51b1p194d10jsn4074b00fdc05',
             'x-rapidapi-host': 'chat-gpt26.p.rapidapi.com',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
+        body: JSON.stringify({                                  //JSON.stringify um die Eingabe als String zu nutzen
             model: 'gpt-3.5-turbo',
             messages: [
                 {
                     role: 'user',
-                    content: 'similar movies  ' + test 
+                    content: 'similar movies  ' + nutzerEingabe
                 }
             ]
         })
@@ -20,40 +20,49 @@ const chatData = async(test) =>{
 
     try {
         const response = await fetch(url, options);
-        const result = await response.text();
+        const result = await response.text();                       // result ist im JSON format
         console.log(result);
         let chatoutput = "";
+        if(chatAnsSort(result)!= null){
         chatoutput += `
-        <p>
-        ${chatAns(result)}
-        </p>
+        <ul>
+            <li>${chatAnsSort(result).slice(0,1)}</li>
+            <li>${chatAnsSort(result).slice(1,2)}</li>
+            <li>${chatAnsSort(result).slice(2,3)}</li>
+        </ul>
         `;
+        }else{
+            chatoutput += `
+            <p> We are using ChatGPT 3.5, which is why we cant provide any similar movies to you sorry :(
+            </p>
+            `; 
+        }
         document.getElementById("ansChatGpt").innerHTML = chatoutput;
     } catch (error) {
         console.error(error);
     }
 }
 
-const chatAns= (jsonString) =>{
+const chatAnsSort= (jsonString) =>{                                 // DIe JSON dinger lesbar umwandeln
     try{
         const data = JSON.parse(jsonString);
         const content = data.choices[0].message.content;
-        const films = content.split('\n').map(film => film.replace(/^\d+\.\s*/, ''));
+        const films = content.split('\n').map(film => film.replace(/^\d+\.\s*/, '')); // onderzeichen ersetzen, filme sind von ChatGpt dur \n getrennt deswegen split\n
         const topFilms = films.slice(0, 3);
-        return films;
-    } catch (error){
-        console.error("fehler beim analysieren");
+        return topFilms;
+    } catch{
+        return null;
     }
 
 };
 
-const userInputGpt = document.querySelector('#search-input');
-const gptBtn = document.querySelector('#searchButton');
+const userInputGpt = document.querySelector('#search-input');       // Eingabe der Suchleiste nutzbarmachen
+const gptBtn = document.querySelector('#searchButton');             // Serachbutton deklarieren
 
-const callchatData = () => {
-    const userInputGpt2 = userInputGpt.value;
-    chatData(userInputGpt2);
-    userInput.value = ''; // optional: clear input field after fetching data
+const callchatData = () => {                                        // ruft obere Funktion auf
+    const wichtig = userInputGpt.value;                       // wichtig! ohne das geht es nicht
+    chatData(wichtig);                    
+    userInput.value = '';                                           // optional: clear input field after fetching data
 }
 
 gptBtn.addEventListener('click', callchatData);
