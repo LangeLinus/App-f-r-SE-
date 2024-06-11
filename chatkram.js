@@ -3,7 +3,7 @@ const chatData = async(nutzerEingabe) =>{   //nutzereingabe ist da einfach nur u
     const options = {
         method: 'POST',
         headers: {
-            'x-rapidapi-key': '91f8942407mshcccb16440fc51b1p194d10jsn4074b00fdc05',
+            'x-rapidapi-key': '585de8f192mshb8db94cd315acb9p1eec1cjsn2e181205463e',
             'x-rapidapi-host': 'chat-gpt26.p.rapidapi.com',
             'Content-Type': 'application/json'
         },
@@ -33,7 +33,7 @@ const chatData = async(nutzerEingabe) =>{   //nutzereingabe ist da einfach nur u
         `;
         }else{
             chatoutput += `
-            <p> We are using ChatGPT 3.5, which is why we cant provide any similar movies to you sorry :(
+            <p> We are using ChatGPT 3.5, which is why we cant provide any similar movies to you sorry :( 
             </p>
             `; 
         }
